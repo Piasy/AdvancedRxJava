@@ -1,0 +1,121 @@
+# Site settings
+title: Piasy
+SEOTitle: Piasy的博客 | Piasy Blog
+header-img: img/home-bg.jpg
+email: xz4215@gmail.com
+description: "NEVER STOP"
+keyword: "Piasy"
+url: "http://blog.piasy.com/"              # your host, for absolute URL
+baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
+
+
+
+# SNS settings
+RSS: true
+footer-links:
+    email: xz4215@gmail.com
+    github:    Piasy
+    linkedin: piasy
+    stackoverflow: users/3077508/piasy
+    googleplus: +許建林
+
+
+
+# Build settings
+highlighter: rouge
+permalink: pretty
+paginate: 10
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md", "_drafts", "raw"]
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+
+
+
+# Markdown settings
+# replace redcarpet to kramdown,
+# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
+# document: http://jekyllrb.com/docs/configuration/#kramdown
+markdown: kramdown
+kramdown:
+  input: GFM                            # use Github Flavored Markdown !important
+
+
+
+# Disqus settings
+disqus_username: piasy
+
+# Duoshuo settings
+#duoshuo_username: huxblog
+# Share component is depend on Comment so we can NOT use share only.
+#duoshuo_share: true                     # set to false if you want to use Comment without Sharing
+
+
+gems:
+  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
+  - jekyll-paginate
+
+
+# Analytics settings
+# Baidu Analytics
+ba_track_id: 0047a0e87acd4fe7ce36981131e63eca
+# Google Analytics
+ga_track_id: 'UA-68342301-1'            # Format: UA-xxxxxx-xx
+ga_domain: blog.piasy.com
+
+
+
+# Sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: "NEVER STOP"
+sidebar-avatar: /img/piasy_avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+
+
+# Featured Tags
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 0              # A tag will be featured if the size of it is more than this condition value
+
+
+
+# Friends
+friends: [
+    {
+        title: "安卓开发者官博",
+        href: "http://android-developers.blogspot.com/"
+    },
+    {
+        title: "老罗的Android之旅",
+        href: "http://blog.csdn.net/Luoshengyang"
+    },
+    {
+        title: "胡凯",
+        href: "http://hukai.me/"
+    },
+    {
+        title: "代码家",
+        href: "http://blog.daimajia.com/"
+    },
+    {
+        title: "Trinea",
+        href: "http://www.trinea.cn/"
+    },
+    {
+        title: "郭霖的专栏",
+        href: "http://blog.csdn.net/guolin_blog"
+    },
+    {
+        title: "stormzhang博客精华",
+        href: "http://stormzhang.com/"
+    },
+    {
+        title: "张鸿洋",
+        href: "http://blog.csdn.net/lmj623565791/"
+    },
+    {
+        title: "张兴业的博客",
+        href: "http://blog.csdn.net/xyz_lmn"
+    },
+    {
+        title: "hi大头鬼hi",
+        href: "http://blog.csdn.net/lzyzsd/"
+    }
+]

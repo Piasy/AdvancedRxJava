@@ -1,0 +1,171 @@
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    {% if site.RSS %}
+                    <li>
+                        <a target="_blank" href="{{ "/feed.xml" | prepend: site.baseurl }}">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    
+                    {% if site.footer-links.github %}
+                    <li>
+                        <a target="_blank" href="https://github.com/{{ site.footer-links.github }}">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    
+                    {% if site.footer-links.email %}
+                    <li>
+                        <a target="_blank" href="mailto:{{ site.footer-links.email }}">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    
+                    {% if site.footer-links.linkedin %}
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/{{ site.footer-links.linkedin }}">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin-square fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    
+                    {% if site.footer-links.stackoverflow %}
+                    <li>
+                        <a target="_blank" href="http://stackoverflow.com/{{ site.footer-links.stackoverflow }}">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    
+                    {% if site.footer-links.googleplus %}
+                    <li>
+                        <a target="_blank" href="https://plus.google.com/{{ site.footer-links.googleplus }}">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-google-plus-square fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; {{ site.title }} {{ site.time | date: '%Y' }}
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ "/js/bootstrap.min.js " | prepend: site.baseurl }}"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="{{ "/js/hux-blog.min.js " | prepend: site.baseurl }}"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- Highlight.js -->
+<script>
+    async("/css/highlight.min.js", function(){
+        hljs.initHighlightingOnLoad();
+    })
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+<link href="/css/github.min.css" rel="stylesheet">
+
+<!--fastClick.js -->
+<script>
+    async("/css/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+{% if site.ga_track_id %}
+<script>
+    // dynamic User by Hux
+    var _gaId = '{{ site.ga_track_id }}';
+    var _gaDomain = '{{ site.ga_domain }}';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+{% endif %}
+
+
+<!-- Baidu Tongji -->
+{% if site.ba_track_id %}
+<script>
+    // dynamic User by Hux
+    var _baId = '{{ site.ba_track_id }}';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+{% endif %}
