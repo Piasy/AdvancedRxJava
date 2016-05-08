@@ -220,7 +220,7 @@ layout: default
 </script>
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
-    async("/js/anchor.min.js",function(){
+    async("{{ '/js/anchor.min.js' | prepend: site.baseurl }}",function(){
         anchors.options = {
           visible: 'always',
           placement: 'right',
