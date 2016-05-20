@@ -5,7 +5,7 @@ tags:
     - Operator
 ---
 
-原文 [Operator concurrency primitives: serialized access (part 1)](http://akarnokd.blogspot.sg/2015/05/operator-concurrency-primitives.html){:target="_blank"}
+原文 [Operator concurrency primitives: serialized access (part 1)](http://akarnokd.blogspot.com/2015/05/operator-concurrency-primitives.html){:target="_blank"}
 
 ## 介绍
 [RxJava 库](https://github.com/ReactiveX/RxJava){:target="_blank"}中最重要的要求就是 `Observer/Subscriber` 的 `onNext`，`onError` 以及 `onCompleted` 方法需要是串行调用的（_译者注：一个事件流，它的事件当然需要是串行发生的，不可能同一个流的多个事件同时发生_）。尽管我们称之为 **serialized access**，但它和 Java 的 `Serializable` 接口或者数据序列化没有任何关系。
