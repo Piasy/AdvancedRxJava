@@ -3,6 +3,7 @@ layout: post
 title: 实现操作符时的一些陷阱（一）
 tags:
     - Operator
+    - Pitfall
 ---
 
 原文 [Pitfalls of operator implementations (part 1)](http://akarnokd.blogspot.com/2015/05/pitfalls-of-operator-implementations.html){:target="_blank"}

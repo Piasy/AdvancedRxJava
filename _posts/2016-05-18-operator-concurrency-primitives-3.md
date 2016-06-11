@@ -3,6 +3,7 @@ layout: post
 title: Operator 并发原语： producers（一）
 tags:
     - Operator
+    - Producer
 ---
 
 原文 [Operator concurrency primitives: producers (part 1)](http://akarnokd.blogspot.com/2015/05/operator-concurrency-primitives_12.html){:target="_blank"}
