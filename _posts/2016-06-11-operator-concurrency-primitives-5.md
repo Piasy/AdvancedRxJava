@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Operator 并发原语： producers（三）
+title: Operator 并发原语： producers（三），QueuedProducer
 tags:
     - Operator
     - Producer

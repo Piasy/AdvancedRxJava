@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Operator 并发原语：串行访问（serialized access）（二）
+title: Operator 并发原语：串行访问（serialized access）（二），queue-drain
 tags:
     - Operator
 ---

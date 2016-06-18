@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Operator 并发原语：串行访问（serialized access）（一）
+title: Operator 并发原语：串行访问（serialized access）（一），emitter-loop
 tags:
     - Operator
 ---
