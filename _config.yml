@@ -5,7 +5,7 @@ header-img: img/home-bg.jpg
 email: xz4215@gmail.com
 description: "NEVER STOP"
 keyword: "Piasy"
-url: "http://blog.piasy.com/"              # your host, for absolute URL
+url: "http://blog.piasy.com"              # your host, for absolute URL
 baseurl: "/AdvancedRxJava"                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 

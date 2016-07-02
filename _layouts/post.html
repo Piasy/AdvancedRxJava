@@ -51,6 +51,8 @@ layout: default
 
                 <hr>
 
+                本文是 Piasy 原创，发表于 <a href="{{site.url}}{{site.baseurl}}">{{site.url}}{{site.baseurl}}</a>，请阅读原文抵制无耻窃贼 <a href="{{site.url}}{{site.baseurl}}{{page.url}}">{{site.url}}{{site.baseurl}}{{page.url}}</a>
+
 				{{ content }}
 
                 <hr>
@@ -201,7 +203,7 @@ layout: default
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "{{site.disqus_username}}";
     var disqus_identifier = "{{page.id}}";
-    var disqus_url = "{{site.url}}{{page.url}}";
+    var disqus_url = "{{site.url}}{{site.baseurl}}{{page.url}}";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
