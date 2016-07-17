@@ -156,9 +156,7 @@ public void unsubscribe() {
                 one.unsubscribe();          // (7)
             }
         } catch (Throwable t) {
-            if (errors == null) {
-                errors = new ArrayList<>(); // (8)
-            }
+            errors = new ArrayList<>();     // (8)
             errors.add(t);
         }
         try {
