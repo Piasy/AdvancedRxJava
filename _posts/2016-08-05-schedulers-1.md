@@ -2,8 +2,7 @@
 layout: post
 title: 调度器 Scheduler（一）：实现自定义 Scheduler
 tags:
-    - Operator
-    - Subscription
+    - Scheduler
 ---
 
 原文 [Schedulers (part 1)](http://akarnokd.blogspot.com/2015/05/schedulers-part-1.html){:target="_blank"}
