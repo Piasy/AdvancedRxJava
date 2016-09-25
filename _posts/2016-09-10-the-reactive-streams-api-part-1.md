@@ -2,7 +2,7 @@
 layout: post
 title: Reactive-Streams API（一）：概览
 tags:
-    - Scheduler
+    - Reactive Stream
 ---
 
 原文 [The Reactive-Streams API (part 1)](http://akarnokd.blogspot.com/2015/06/the-reactive-streams-api-part-1.html){:target="_blank"}
