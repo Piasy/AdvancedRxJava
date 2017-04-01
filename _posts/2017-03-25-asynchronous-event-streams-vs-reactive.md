@@ -5,7 +5,7 @@ tags:
     - Reactive Stream
 ---
 
-原文 [Asynchronous Event Streams vs. Reactive-Streams](http://akarnokd.blogspot.com/2015//11/asynchronous-event-streams-vs-reactive.html){:target="_blank"}。
+原文 [Asynchronous Event Streams vs. Reactive-Streams](http://akarnokd.blogspot.com/2015/11/asynchronous-event-streams-vs-reactive.html){:target="_blank"}。
 
 ## 介绍
 
