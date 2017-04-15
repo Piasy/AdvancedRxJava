@@ -2,7 +2,7 @@
 layout: post
 title: FlatMap 技术揭秘（一）
 tags:
-    - Completable
+    - Operator
 ---
 
 原文 [FlatMap (part 1)](http://akarnokd.blogspot.com/2016/02/flatmap-part-1.html){:target="_blank"}。
