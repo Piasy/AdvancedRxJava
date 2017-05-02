@@ -2,7 +2,6 @@
 layout: post
 title: RxJava 设计回顾
 tags:
-    - Operator
 ---
 
 原文 [RxJava design retrospect](http://akarnokd.blogspot.com/2016/03/rxjava-design-retrospect.html){:target="_blank"}。
