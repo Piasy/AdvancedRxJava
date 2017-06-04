@@ -2,7 +2,7 @@
 layout: post
 title: Google Agera vs. ReactiveX
 tags:
-    - Operator
+    - 对比点评
 ---
 
 原文 [Google Agera vs. ReactiveX](http://akarnokd.blogspot.com/2016/04/google-agera-vs-reactivex.html){:target="_blank"}。
