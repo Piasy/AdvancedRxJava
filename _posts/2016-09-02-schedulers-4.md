@@ -45,7 +45,7 @@ implements GuiEventLoop {
 Executor exec = SwingUtilities::invokeLater;
 ~~~
 
-然后利用[本系列第三篇](/AdvancedRxJava/2016/08/26/schedulers-3/){:target="_blank"}中介绍的 `ExecutorScheduler`，但这种方式通常会带来一些额外的开销，而且我也会展示当我们可以通过 GUI 系统的某些方法取消、移除任务时，我们可以怎样处理这一问题。
+然后利用[本系列第三篇](/AdvancedRxJava/2016/08/26/schedulers-3/index.html){:target="_blank"}中介绍的 `ExecutorScheduler`，但这种方式通常会带来一些额外的开销，而且我也会展示当我们可以通过 GUI 系统的某些方法取消、移除任务时，我们可以怎样处理这一问题。
 
 由于 GUI 的事件循环是单线程的，所以我们在实现 `Worker` 时无需考虑同步和中继问题，让我们看看更简单的 `GuiScheduler` 的类结构：
 
@@ -128,7 +128,7 @@ public Subscription schedule(Action0 action) {
 4. 我们把 Runnable 提交到 GuiEventLoop 中。
 5. 然后我们在取消订阅时移除提交的任务。注意，如果我们交换（4）和（5），而且就在我们执行 `eventLoop.run(r)` 之前 worker 被取消订阅了，那我们就会立即移除 `r`（而此时 `r` 并不在 GuiEventLoop 中），那我们再执行 `eventLoop.run(r)` 时，就无法取消了。
 
-由于我们要适配的 API 不提供延迟执行的功能（延迟执行在处理定期执行时将很有用，例如动画），所以我们依然要利用[本系列第二篇](/AdvancedRxJava/2016/08/19/schedulers-2/){:target="_blank"}中介绍的 `genericScheduler`：
+由于我们要适配的 API 不提供延迟执行的功能（延迟执行在处理定期执行时将很有用，例如动画），所以我们依然要利用[本系列第二篇](/AdvancedRxJava/2016/08/19/schedulers-2/index.html){:target="_blank"}中介绍的 `genericScheduler`：
 
 ~~~ java
 @Override
@@ -230,4 +230,4 @@ Thread[AWT-EventQueue-0,6,main]
 
 通常来说，处理 `Scheduler` API 或者我们想要包装的 API 时会遇到一些微妙的问题。这些“单独”的问题很难在本文中进行抽象化，所以如果你有什么有趣或者困难的 API 需要包装，你可以在 [StackOverflow 的 rx-java 话题](http://stackoverflow.com/questions/tagged/rx-java){:target="_blank"}中提问，或者我们的 [Google 群组](https://groups.google.com/forum/#!forum/rxjava){:target="_blank"}中提问，或者直接在本文下评论，以及在 [twitter 上 @akarnokd](https://twitter.com/akarnokd){:target="_blank"} 联系我。
 
-[Reactive-streams](https://github.com/reactive-streams/reactive-streams-io/){:target="_blank"} 最近似乎变得越来越知名，但由于它并没有提供太多超出已有的互操作 API 的内容（例如没有 `flatMap`），很多人开始编写一次性的 `Publisher`，并且对它的 `Subscription` 模型的行为产生了疑问。鉴于 RxJava 2.0 将原生支持 reactive-streams API，我们对 `Producer` 的知识将在处理 reactive-streams 的 `Subscription` 时变得很有用。在接下来的系列博客中，我将讲解 reactive-streams API，并且展示如何把 RxJava 的 `Producer` 转换为 `Subscription`。
+[Reactive-streams](https://github.com/reactive-streams/reactive-streams-io){:target="_blank"} 最近似乎变得越来越知名，但由于它并没有提供太多超出已有的互操作 API 的内容（例如没有 `flatMap`），很多人开始编写一次性的 `Publisher`，并且对它的 `Subscription` 模型的行为产生了疑问。鉴于 RxJava 2.0 将原生支持 reactive-streams API，我们对 `Producer` 的知识将在处理 reactive-streams 的 `Subscription` 时变得很有用。在接下来的系列博客中，我将讲解 reactive-streams API，并且展示如何把 RxJava 的 `Producer` 转换为 `Subscription`。

@@ -105,7 +105,7 @@ implements Producer {
 `ProducerArbiter` 看起来并无特殊之处，目前看来，它有以下几个特性：
 
 1. 我们记录到目前为止总的请求数量，也记录当前的 producer。当前的 producer 可能为 `null`，这种情况下我们依然累计总请求数量，并在 producer 被设置时，一起发送给 producer。
-2. 我们将使用 [发射者循环（emitter-loop）](/AdvancedRxJava/2016/05/06/operator-concurrency-primitives/){:target="_blank"}方式来实现串行访问，因为我们需要支持并发调用 `request()`，以及并发切换 producer。_注意，这并不是保证从上游到下游的 `onNext` 事件串行发生，并发切换 producer 可能会导致来自多个上游 observable 的 `onNext` 事件同时发生。我将在本系列后续的文章中解决这一问题，不过幸运的是，在本文的 `ThenObserve` 中，这个问题并没有影响。_
+2. 我们将使用 [发射者循环（emitter-loop）](/AdvancedRxJava/2016/05/06/operator-concurrency-primitives/index.html){:target="_blank"}方式来实现串行访问，因为我们需要支持并发调用 `request()`，以及并发切换 producer。_注意，这并不是保证从上游到下游的 `onNext` 事件串行发生，并发切换 producer 可能会导致来自多个上游 observable 的 `onNext` 事件同时发生。我将在本系列后续的文章中解决这一问题，不过幸运的是，在本文的 `ThenObserve` 中，这个问题并没有影响。_
 3. 有时我们需要清除对当前 producer 的引用，但我们用 `missedProducer` 为 `null` 来代表当前没有设置 producer 的尝试。
 
 有了这个基本结构之后，让我们逐个实现上面的函数：

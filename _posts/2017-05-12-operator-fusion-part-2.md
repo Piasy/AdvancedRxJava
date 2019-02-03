@@ -747,7 +747,7 @@ static final class FilterSubscriber<T> implements Subscriber<T>, QueueSubscripti
 
 我在前文提到，很多操作符都有头部队列（例如 `concatMap`，`observeOn`），或者消费内部 Publisher（例如 `flatMap`，`zip`）。它们是主要的消费者，也驱动着熔合的生命周期。
 
-既然我们对 [`observeOn` 的实现原理](/AdvancedRxJava/2016/09/16/subscribeon-and-observeon/)已经比较熟悉了，那就来看看如何启用熔合：
+既然我们对 [`observeOn` 的实现原理](/AdvancedRxJava/2016/09/16/subscribeon-and-observeon/index.html)已经比较熟悉了，那就来看看如何启用熔合：
 
 ~~~ java
 static final class ObserveOnSubscriber<T> implements Subscriber<T>, Subscription {

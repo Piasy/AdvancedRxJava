@@ -10,7 +10,7 @@ tags:
 
 ## 介绍
 
-在实现了[相对复杂的 producer](/AdvancedRxJava/2016/06/11/operator-concurrency-primitives-5/){:target="_blank"} 之后，现在是时候关注简单一点的内容了。在本文中，我将对最初介绍的 `RangeProducer` 进行一次优化：在无限请求时增加一个发射快路径。
+在实现了[相对复杂的 producer](/AdvancedRxJava/2016/06/11/operator-concurrency-primitives-5/index.html){:target="_blank"} 之后，现在是时候关注简单一点的内容了。在本文中，我将对最初介绍的 `RangeProducer` 进行一次优化：在无限请求时增加一个发射快路径。
 
 在 RxJava 中，如果第一次就请求 `Long.MAX_VALUE` 等同于请求无限的数据，并且会触发很多发射快路径，就像支持 backpressure 之前的远古时代那样。在这种情况下，我们无需响应请求并生产数据了（只需处理好取消订阅即可）。
 

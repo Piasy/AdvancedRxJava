@@ -90,7 +90,7 @@ _我额外提一句，我不记得社区里有人提到过这个问题，似乎�
 
 我编写了很多这样的操作符，我注意到它们都用了同样的模块和方法：
 
-1. 它们都需要记录 Subscriber，无论是下游的 Subscriber 还是订阅到上游的 Subscriber；而这一记录功能都用了[基于数组的 copy-on-write 方式实现的容器类](/AdvancedRxJava/2016/07/29/operator-concurrency-primitives-subscription-containers-3/)；
+1. 它们都需要记录 Subscriber，无论是下游的 Subscriber 还是订阅到上游的 Subscriber；而这一记录功能都用了[基于数组的 copy-on-write 方式实现的容器类](/AdvancedRxJava/2016/07/29/operator-concurrency-primitives-subscription-containers-3/index.html)；
 2. 它们都用了发射者循环（基于 `synchronized`）或者队列漏（基于原子类），而这两者都需要在很多情形中触发：上游发出事件时，新的下游到来时，下游发来请求时，或者下游取消订阅时；
 3. 它们的循环体里都需要一些预处理：搞清楚当前 Subscriber 的情况，选择一个上游开始漏出，或者按照某种方式把上游的数据结合起来；
 4. 最终，事件被发送到了 Subscriber 那里，并且向上游 Observable 发出请求补充数据；
@@ -401,7 +401,7 @@ static final class Connection<T>
 1. Connection 类需要管理众多状态：当前的 Subscriber 数组；事件队列以及终止事件的容器；已经连接和断开连接的标识；队列漏需要的工作计数；订阅到上游 Observable 的 Subscriber（parent）；以及标记空状态和终止状态的 Subscriber 数组；
 2. 在构造函数中我们初始化各个状态；
 3. 创建 SourceSubscriber 时我们还需要一些准备工作，所以我把它单独抽离为一个函数；
-4. 维护 Subscriber 的 copy-on-write 处理是通过 add 和 remove 完成的，就像在[处理 Subject 时](/AdvancedRxJava/2016/10/05/subjects-part-3/)那样，而且用了[基于数组的 Subscription 容器类](/AdvancedRxJava/2016/07/29/operator-concurrency-primitives-subscription-containers-3/)；
+4. 维护 Subscriber 的 copy-on-write 处理是通过 add 和 remove 完成的，就像在[处理 Subject 时](/AdvancedRxJava/2016/10/05/subjects-part-3/index.html)那样，而且用了[基于数组的 Subscription 容器类](/AdvancedRxJava/2016/07/29/operator-concurrency-primitives-subscription-containers-3/index.html)；
 5. 上游事件在 onXXX 中进行处理；
 6. 最后，队列漏的实现还需要 drain 和 checkTerminated 函数；
 

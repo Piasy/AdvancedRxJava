@@ -15,7 +15,7 @@ RxJava 的 flatMap 提供了最大并发数限制，也就是最多同时允许�
 
 ## 并发限制
 
-由于历史原因，RxJava 的 flatMap（以及我们在[上篇](/AdvancedRxJava/2017/04/10/flatmap-part-1/)中的实现）对主上游来说都是处于无尽模式的。这对不太频繁的主上游，以及持续较短的内部 Observable 也许是可行的。然而即便主上游可以按照特定的频率发射，例如 range()，但内部的 Observable 也可能会占用有限的资源，例如网络连接。
+由于历史原因，RxJava 的 flatMap（以及我们在[上篇](/AdvancedRxJava/2017/04/10/flatmap-part-1/index.html)中的实现）对主上游来说都是处于无尽模式的。这对不太频繁的主上游，以及持续较短的内部 Observable 也许是可行的。然而即便主上游可以按照特定的频率发射，例如 range()，但内部的 Observable 也可能会占用有限的资源，例如网络连接。
 
 那么问题在于，我们如何确保只有用户指定数量的 Observable 可以被同时订阅？我们怎么确保有些主上游只发射出指定数量的数据？
 
@@ -81,7 +81,7 @@ void innerComplete(Subscriber<?> inner) {
 }
 ~~~
 
-这只是对 backpressure 很直观的应用。但要注意 innerComplete 可能被内部 Observable 触发并发调用，所以主上游的请求处理逻辑必须是[线程安全和可重入的](/AdvancedRxJava/2016/05/18/operator-concurrency-primitives-3/)。
+这只是对 backpressure 很直观的应用。但要注意 innerComplete 可能被内部 Observable 触发并发调用，所以主上游的请求处理逻辑必须是[线程安全和可重入的](/AdvancedRxJava/2016/05/18/operator-concurrency-primitives-3/index.html)。
 
 ## 错误延迟
 
@@ -355,7 +355,7 @@ void innerNext(FlatMapInnerSubscriber<T, R> inner, R value) {
 
 不幸的是，每个上游独立队列的方式给我们带来了一些麻烦，因为 `drainLoop()` 不能使用共享队列，而我们又需要知道当前正在活跃的上游，但是 CompositeSubscription 并没有把它的内容暴露出来。此外，CompositeSubscription 内部使用了 HashSet，它需要保证能线程安全地遍历，为大部分情况增加了如此多的开销会让我们其他的努力付诸东流。
 
-这里我们可以套用一下以前我们在 Subject 和 ConnectableObservable 中使用的 [copy-on-write 模式的 Subscriber 管理技术](/AdvancedRxJava/2016/07/29/operator-concurrency-primitives-subscription-containers-3/)。这让我们有了一个很漂亮的 FlatMapInnerSubscriber 数组，并可以摆脱 csub 和 active 成员。
+这里我们可以套用一下以前我们在 Subject 和 ConnectableObservable 中使用的 [copy-on-write 模式的 Subscriber 管理技术](/AdvancedRxJava/2016/07/29/operator-concurrency-primitives-subscription-containers-3/index.html)。这让我们有了一个很漂亮的 FlatMapInnerSubscriber 数组，并可以摆脱 csub 和 active 成员。
 
 ~~~ java
 @SuppressWarnings("rawtypes")

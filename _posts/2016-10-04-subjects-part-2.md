@@ -159,7 +159,7 @@ static final class State<T> implements
 4. 我们保存了终结状态（包括可能的错误），由于错误只会在结束之前写一次，然后在结束之后读，所以它不需要是 `volatile`。
 5. 由于 child 可能随时取消订阅，之后我们显然不必要继续保存新事件了。`unsubscribed` 和 `done` 将在 `onXXX` 中用来判断是否需要丢弃事件。
 6. 我们需要记录 child 请求的数据量，保证不发出超量的数据（backpressure）。
-7. `wip` 是在[前文提到的队列漏](/AdvancedRxJava/2016/05/13/operator-concurrency-primitives-2/){:target="_blank"}中要使用的，用来保证只有一个线程向 child 发送数据。
+7. `wip` 是在[前文提到的队列漏](/AdvancedRxJava/2016/05/13/operator-concurrency-primitives-2/index.html){:target="_blank"}中要使用的，用来保证只有一个线程向 child 发送数据。
 
 接下来，让我们实现 `OnSubscribe.call()` 并且实现对 Subscriber 的管理：
 

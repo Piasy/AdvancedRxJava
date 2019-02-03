@@ -8,7 +8,7 @@ tags:
 
 原文 [SubscribeOn and ObserveOn](http://akarnokd.blogspot.com/2016/03/subscribeon-and-observeon.html){:target="_blank"}
 
-注：这篇文章八月份就翻译完成了，当时是为了加深自己对 `subscribeOn` 和 `observeOn` 的理解，本打算按照原文作者的发表顺序发布译文，但今天在写[拆轮子系列：拆 RxJava](/2016/09/15/Understand-RxJava/){:target="_blank"}，里面涉及到了这块内容，为了便于援引，所以提前发布，还好发布在 scheduler 之后也算比较合理。
+注：这篇文章八月份就翻译完成了，当时是为了加深自己对 `subscribeOn` 和 `observeOn` 的理解，本打算按照原文作者的发表顺序发布译文，但今天在写[拆轮子系列：拆 RxJava](/2016/09/15/Understand-RxJava/index.html){:target="_blank"}，里面涉及到了这块内容，为了便于援引，所以提前发布，还好发布在 scheduler 之后也算比较合理。
 
 ## 介绍
 在响应式编程生态中，最令人疑惑的一对操作符应该就是 `subscribeOn` 和 `observeOn` 了。究其根本原因，可能是以下几点：

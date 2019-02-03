@@ -315,7 +315,7 @@ return 0L;
 5. CAS 成功后，如果递减后为 0，那我们也返回 backpressure 值，否则返回 0，告知上游可以立即发出下一个事件；
 6. 对于错误和结束事件，我们调用相应的 onXXX 方法即可，然后取消掉 CompositeDisposable；
 
-在上面的实现中有一个无法避免的问题：如果传入的 backpressure 参数不够大怎么办？为了简洁起见，上面的代码并未处理这种情况，所以需要在创建的 Observable 上应用 `onBackpressureXXX` 操作符。实现一个[在前文中提过的支持 `BackpressureStrategy` 的版本](/AdvancedRxJava/2016/10/05/subjects-part-3/)就交给读者了。
+在上面的实现中有一个无法避免的问题：如果传入的 backpressure 参数不够大怎么办？为了简洁起见，上面的代码并未处理这种情况，所以需要在创建的 Observable 上应用 `onBackpressureXXX` 操作符。实现一个[在前文中提过的支持 `BackpressureStrategy` 的版本](/AdvancedRxJava/2016/10/05/subjects-part-3/index.html)就交给读者了。
 
 既然有了相互转换的方法，那我们就可以轻易地基于 RxJava 2.x（或者其他任何 Reactive-Stream 实现库）实现 PushStream 的方法了。
 

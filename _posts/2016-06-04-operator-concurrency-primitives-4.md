@@ -9,7 +9,7 @@ tags:
 原文 [Operator concurrency primitives: producers (part 2)](http://akarnokd.blogspot.com/2015/05/operator-concurrency-primitives_86.html){:target="_blank"}
 
 ## 介绍
-在[第一部分](/2016/05/18/operator-concurrency-primitives-3/){:target="_blank"}中我花了相当长的篇幅介绍了一个很复杂的 `RangeProducer`，在第二部分中，我将介绍几种更简单的 `Producer`。
+在[第一部分](/2016/05/18/operator-concurrency-primitives-3/index.html){:target="_blank"}中我花了相当长的篇幅介绍了一个很复杂的 `RangeProducer`，在第二部分中，我将介绍几种更简单的 `Producer`。
 
 你可能会思考，为什么不从更简单的 Producer 开始呢？有两个主要原因：1. 我认为介绍 `RangeProducer` 更有助于我们洞悉 Producer 的原理；2. 这些简单地 Producer 可以利用 `RangeProducer` 的思想扩展出来。
 

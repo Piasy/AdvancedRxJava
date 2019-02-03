@@ -51,7 +51,7 @@ public void onCompleted() {
 // ... same as before
 ~~~
 
-我们在 [produer（二）](/AdvancedRxJava/2016/06/04/operator-concurrency-primitives-4/){:target="_blank"} 中介绍过 `SingleProducer`，现在它是最合适的选择。
+我们在 [produer（二）](/AdvancedRxJava/2016/06/04/operator-concurrency-primitives-4/index.html){:target="_blank"} 中介绍过 `SingleProducer`，现在它是最合适的选择。
 
 但是我想介绍另外一种解决方案，这种方案和 RxJava 2.0 以及 reactive-streams 兼容的操作符相关：
 

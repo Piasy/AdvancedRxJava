@@ -224,7 +224,7 @@ range 操作本身是同步的，在我看来，`CompletableFuture` 和 `AsyncSu
 
 ## 异步化
 
-当然我们需要的是异步，所以让我们实现一下 `observeOn` 和 `subscribeOn` 操作符。前者确保 `CompletionStage<Boolean>` 的代码在指定的线程执行，后者确保 `moveNext()` 的代码执行在指定的线程（所以我们就可以在 `moveNext()` 或者 `enumerator()` 中进行阻塞 IO 操作了）。此外，[编写这两个操作符](/AdvancedRxJava/2016/09/16/subscribeon-and-observeon/)我们已经很熟练了，对吧？
+当然我们需要的是异步，所以让我们实现一下 `observeOn` 和 `subscribeOn` 操作符。前者确保 `CompletionStage<Boolean>` 的代码在指定的线程执行，后者确保 `moveNext()` 的代码执行在指定的线程（所以我们就可以在 `moveNext()` 或者 `enumerator()` 中进行阻塞 IO 操作了）。此外，[编写这两个操作符](/AdvancedRxJava/2016/09/16/subscribeon-and-observeon/index.html)我们已经很熟练了，对吧？
 
 ### observeOn
 

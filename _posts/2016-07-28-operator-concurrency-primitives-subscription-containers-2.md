@@ -10,7 +10,7 @@ tags:
 
 ## 介绍
 
-在本文中，我将实现[前文中](/AdvancedRxJava/2016/07/15/operator-concurrency-primitives-subscription-containers-1/){:target="_blank"}介绍的 `TwoSubscribers` 的两种无锁化（_非阻塞_）版本。尽管它们在功能上完全一致，但是在实现的过程中将表现出在处理订阅状态检查和取消订阅时两种不同的哲学。
+在本文中，我将实现[前文中](/AdvancedRxJava/2016/07/15/operator-concurrency-primitives-subscription-containers-1/index.html){:target="_blank"}介绍的 `TwoSubscribers` 的两种无锁化（_非阻塞_）版本。尽管它们在功能上完全一致，但是在实现的过程中将表现出在处理订阅状态检查和取消订阅时两种不同的哲学。
 
 ## 在状态类中使用 `boolean isUnsubscribed`
 

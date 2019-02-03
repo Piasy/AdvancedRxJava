@@ -9,7 +9,7 @@ tags:
 
 ## 介绍
 
-在我（_原作者_）个人看来，[Reactive-Streams API](https://github.com/reactive-streams/reactive-streams-jvm/){:target="_blank"} 是目前描述异步、取消、支持 backpressure 数据流时最优雅的 API 了，它受到了 RxJava 很多影响，替换了由 Erik Meijer 提出的 `IObservable`/`IObserver` 设计。
+在我（_原作者_）个人看来，[Reactive-Streams API](https://github.com/reactive-streams/reactive-streams-jvm/index.html){:target="_blank"} 是目前描述异步、取消、支持 backpressure 数据流时最优雅的 API 了，它受到了 RxJava 很多影响，替换了由 Erik Meijer 提出的 `IObservable`/`IObserver` 设计。
 
 回到 4 月份，我花了一周的时间，尝试把 RxJava 1.x 移植到新的 API 上来。一开始，最大的障碍是新的 `Subscriber` 接口没有资源管理的途径，以及如何把 RxJava 的 `Producer` 和 `Subscription` 合并为新的 `Subscription` 接口。然而，当我开始实现一系列基础支持的类之后，我开始觉得新的 API 简直设计得太巧妙了，而这一设计最重要的收获应该就是 backpressure 的支持一下子变得直截了当了。
 

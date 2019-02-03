@@ -117,13 +117,13 @@ mad.set(
 
 _注：由于命名冲突，RxJava 2.x 的资源管理类叫 Disposable 而不是 Subscription，我会很快发布一个关于 2.x 的系列文章。_
 
-上面这个例子也预示了 Completable API 的一个特性：资源管理需要操作符自己负责，这里并没有像 `rx.Subscriber` 一样的 `add(Subscription)` 方法。这一点小小的不便需要我们在涉及到任务调度，或者涉及到多个资源管理时，要使用[Subscription 容器类](/AdvancedRxJava/2016/07/15/operator-concurrency-primitives-subscription-containers-1/)。这一设定的好处就是那些不需要资源管理的操作符，就不需要和 `rx.Subscriber` 一样相关的代码了，这样能节省内存分配，提高性能。
+上面这个例子也预示了 Completable API 的一个特性：资源管理需要操作符自己负责，这里并没有像 `rx.Subscriber` 一样的 `add(Subscription)` 方法。这一点小小的不便需要我们在涉及到任务调度，或者涉及到多个资源管理时，要使用[Subscription 容器类](/AdvancedRxJava/2016/07/15/operator-concurrency-primitives-subscription-containers-1/index.html)。这一设定的好处就是那些不需要资源管理的操作符，就不需要和 `rx.Subscriber` 一样相关的代码了，这样能节省内存分配，提高性能。
 
 ## First completed
 
 在我小学的时候，老师们经常发起一些小的挑战，同学们谁第一个完成就能得到一份小奖励。这和 `amb()` 很类似：第一个结束的数据源是赢家。当然，第一个发生错误的数据源也是赢家，在现实生活中失败显然不会让我们胜出。
 
-那如何为 Completable 实现一个 amb 操作符？显然，不像 `Observable.amb`，我们不需要保存胜出 Completable 的信息（因为它已经终止了），所以我们不需要[使用 trikery 的索引以及其他麻烦事](/AdvancedRxJava/2016/10/06/operator-internals-s-amb-ambwith/)，使用一个简单的 AtomicBoolean 就够了。
+那如何为 Completable 实现一个 amb 操作符？显然，不像 `Observable.amb`，我们不需要保存胜出 Completable 的信息（因为它已经终止了），所以我们不需要[使用 trikery 的索引以及其他麻烦事](/AdvancedRxJava/2016/10/06/operator-internals-s-amb-ambwith/index.html)，使用一个简单的 AtomicBoolean 就够了。
 
 ~~~ java
 public static Completable amb(Completable... students) {
@@ -580,7 +580,7 @@ extends Completable implements CompletableSubscriber {
 }
 ~~~
 
-它的结构和[以前的 Subject](/AdvancedRxJava/2016/10/04/subjects-part-2/) 别无二致。我们必须通过工厂方法创建 CompletableSubject，并且需要 CompletableSubscriber 的方法把事件委托到共享的 State 对象上。CompletableSubscription 用于追踪每个 CompletableSubscriber，并根据它们的标识管理取消订阅。
+它的结构和[以前的 Subject](/AdvancedRxJava/2016/10/04/subjects-part-2/index.html) 别无二致。我们必须通过工厂方法创建 CompletableSubject，并且需要 CompletableSubscriber 的方法把事件委托到共享的 State 对象上。CompletableSubscription 用于追踪每个 CompletableSubscriber，并根据它们的标识管理取消订阅。
 
 State 类需要记录一个终止标记，以及一个可能发生的 Throwable，加上当前的下游 CompletableSubscriber 数组：
 

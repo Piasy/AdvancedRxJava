@@ -9,7 +9,7 @@ tags:
 
 ## 介绍
 
-前面我们已经讲解了[怎么创建 cold Observable，例如 range](/AdvancedRxJava/2016/05/18/operator-concurrency-primitives-3/){:target="_blank"}，以及[怎么创建 hot Observable，例如 UnicastSubject](/AdvancedRxJava/2016/10/04/subjects-part-2/){:target="_blank"}，但还没有涉及这两者之间的转换。
+前面我们已经讲解了[怎么创建 cold Observable，例如 range](/AdvancedRxJava/2016/05/18/operator-concurrency-primitives-3/index.html){:target="_blank"}，以及[怎么创建 hot Observable，例如 UnicastSubject](/AdvancedRxJava/2016/10/04/subjects-part-2/index.html){:target="_blank"}，但还没有涉及这两者之间的转换。
 
 显然，由于 Subject 也是 Observable，我们只能把 Subject 订阅到一个 cold Observable 上，然后让所有的 Subscriber 都订阅到这个 Subject 上。
 

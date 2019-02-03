@@ -125,7 +125,7 @@ public Subscription schedule(Action0 action) {
 
 我们现在不能简单地将调用转发到延迟版本中了，它需要自己的逻辑：
 
-1. 我们创建一个 `ScheduledAction`（在[第二部分中实现的](/AdvancedRxJava/2016/08/19/schedulers-2/){:target="_blank"}），并且在其被取消订阅时将自己从 `tracking` 中移除。
+1. 我们创建一个 `ScheduledAction`（在[第二部分中实现的](/AdvancedRxJava/2016/08/19/schedulers-2/index.html){:target="_blank"}），并且在其被取消订阅时将自己从 `tracking` 中移除。
 2. 我们把任务加入到队列中，队列会保证任务按照提交顺序先进先出（FIFO）执行。
 3. 我们在任务被取消时，将任务从队列中移除。注意这里的移除操作复杂度为 O(n)，n 表示队列中在该任务之前等待执行的任务数。
 4. 我们只允许一个漏线程，也就是把 `wip` 从 0 增加到 1 的线程。
@@ -213,7 +213,7 @@ public Subscription schedule(
 2. 如果 worker 已经被取消订阅，我们直接返回表示已经取消订阅的 `Subscription`。
 3. 我们把任务包装为 `ScheduledAction`，加入到 `tracking` 中，并且在取消订阅时从 `tracking` 中移除。
 4. 我们需要一个支持延迟执行的 `Executor`，所以我们检查一下我们的 `Executor` 是否支持这一功能（`ScheduledExecutorService`）。
-5. 如果不支持，那我们就要自己来实现延迟执行，例如使用[本系列第二篇](/AdvancedRxJava/2016/08/19/schedulers-2/){:target="_blank"}中的 `CustomWorker.genericScheduler`。
+5. 如果不支持，那我们就要自己来实现延迟执行，例如使用[本系列第二篇](/AdvancedRxJava/2016/08/19/schedulers-2/index.html){:target="_blank"}中的 `CustomWorker.genericScheduler`。
 6. 有了支持延迟执行的 service 之后，我们直接延迟执行任务即可。
 7. 当延迟任务执行时，我们把任务加入到队列中，并在取消订阅时将任务从队列中移除，递增 `wip`，并且在 0 到 1 的递增情况下进入漏循环。
 8. 我们需要保证在取消订阅时，也要取消掉我们延迟执行的任务（通过返回的 `Future`）。

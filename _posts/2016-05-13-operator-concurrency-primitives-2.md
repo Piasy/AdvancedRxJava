@@ -8,7 +8,7 @@ tags:
 原文 [Operator concurrency primitives: serialized access (part 2)](http://akarnokd.blogspot.com/2015/05/operator-concurrency-primitives_11.html){:target="_blank"}
 
 ## 介绍
-在[Operator 并发原语：串行访问（serialized access）（一）](/AdvancedRxJava/2016/05/06/operator-concurrency-primitives/){:target="_blank"}中，我介绍了串行访问的需求，它是为了让 RxJava 的一些方法以及操作符可以串行执行。我详细介绍了**发射者循环（emitter-loop）**，并展示了如何利用它来实现串行访问的约定。我想再次强调一点，**在大部分的单线程使用场景下，这种实现方式性能表现非常突出，因为 Java (JVM) 的 JIT 编译器会在检测到只有单线程使用时使用偏向锁和锁省略技术**。然而如果异步执行占了主要部分，或者发射操作在另一个线程执行，由于其阻塞（blocking）的原理，发射者循环就会出现性能瓶颈。
+在[Operator 并发原语：串行访问（serialized access）（一）](/AdvancedRxJava/2016/05/06/operator-concurrency-primitives/index.html){:target="_blank"}中，我介绍了串行访问的需求，它是为了让 RxJava 的一些方法以及操作符可以串行执行。我详细介绍了**发射者循环（emitter-loop）**，并展示了如何利用它来实现串行访问的约定。我想再次强调一点，**在大部分的单线程使用场景下，这种实现方式性能表现非常突出，因为 Java (JVM) 的 JIT 编译器会在检测到只有单线程使用时使用偏向锁和锁省略技术**。然而如果异步执行占了主要部分，或者发射操作在另一个线程执行，由于其阻塞（blocking）的原理，发射者循环就会出现性能瓶颈。
 
 在本文中，我将介绍另一种非阻塞的串行实现方式，我称之为**队列漏（queue-drain）**。
 

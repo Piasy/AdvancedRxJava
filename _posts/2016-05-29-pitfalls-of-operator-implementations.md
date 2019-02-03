@@ -289,7 +289,7 @@ Subscriber<Integer> secondary = new Subscriber<Integer>() {
 ## 5，忘记了串行访问（Forgetting to serialize）
 在上面**多次结束**的例子中，还有一个隐藏很深的 bug，简单运行几次难以发现，对 `child` 的 `onXXX` 方法的调用，可能发生在任何线程任何时间，而这违反了 RxJava 的约定：`Observer` 的方法的调用必须是串行的。
 
-为了阻止这种问题的发生，我们需要进行一定的串行访问控制，但使用[前面文章中提到的串行访问方式](/AdvancedRxJava/2016/05/06/operator-concurrency-primitives/){:target="_blank"}就有点矫枉过正了，RxJava 有一个 `SerializedSubscriber` 专门用于这种需求：
+为了阻止这种问题的发生，我们需要进行一定的串行访问控制，但使用[前面文章中提到的串行访问方式](/AdvancedRxJava/2016/05/06/operator-concurrency-primitives/index.html){:target="_blank"}就有点矫枉过正了，RxJava 有一个 `SerializedSubscriber` 专门用于这种需求：
 
 ~~~ java
 // ... same as before

@@ -6,4 +6,4 @@ Advanced Reactive Java http://akarnokd.blogspot.com/ 系列博客的中文翻译
 
 ## 协议许可
 
-[知识共享 署名-非商业性使用-相同方式共享 4.0 国际](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+[知识共享 署名-非商业性使用-相同方式共享 4.0 国际](http://creativecommons.org/licenses/by-nc-sa/4.0/index.html)

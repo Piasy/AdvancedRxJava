@@ -497,7 +497,7 @@ static final class Connection<T> implements Observer<T> {
 1. 这里我们声明的是 ReplayBuffer 成员，而不是有界的队列。
 2. 我们需要记录下游的最大请求量，以及发往上游的请求总量。因为我们不知道上游的 Producer 何时被设置，所以我们必须在它到来之前记下所有的请求量。
 3. 我们把 `Integer.MAX_VALUE` 作为无尽缓冲的标志。
-4. createParent 函数略有不同，这里我们无需 disconnected 标记，而是可以直接把上游取消订阅了。其他 add，remove 和 onConnect 函数和[上一篇文章](/AdvancedRxJava/2017/03/03/connectableobservables-part-2/)完全一样。
+4. createParent 函数略有不同，这里我们无需 disconnected 标记，而是可以直接把上游取消订阅了。其他 add，remove 和 onConnect 函数和[上一篇文章](/AdvancedRxJava/2017/03/03/connectableobservables-part-2/index.html)完全一样。
 5. onXXX 函数有同样的模式：调用 ReplayBuffer 相应的函数，以及对每个 ReplayProducer 调用 replay 函数。注意终止事件会用原子操作把 TERMINATED 设置给 ReplayProducer 数组，这样后来的 Subscriber 就得等到下一个 Connection 对象了。
 6. 最后我们需要管理请求，由于各个 Subscriber 的请求可能并发到来，所以我们需要串行化。由于我们需要计算请求的最大值，所以非阻塞的同步方式可以满足需求。这个函数将在上游的 Producer 到达时调用，以及每个下游发出请求时调用。
 

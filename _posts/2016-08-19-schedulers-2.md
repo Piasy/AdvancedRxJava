@@ -9,7 +9,7 @@ tags:
 
 ## 介绍
 
-在[上文中](/AdvancedRxJava/2016/08/05/schedulers-1/){:target="_blank"}，我介绍了如何利用 RxJava 已有的类来实现自定义的 scheduler。
+在[上文中](/AdvancedRxJava/2016/08/05/schedulers-1/index.html){:target="_blank"}，我介绍了如何利用 RxJava 已有的类来实现自定义的 scheduler。
 
 在本文中，我将更加深入一层，演示如何操控底层的 `ExecutorService` 以及 RxJava 其他的基础设施，并与之进行交互，而这些都是无法通过 `NewThreadWorker` 实现的。
 

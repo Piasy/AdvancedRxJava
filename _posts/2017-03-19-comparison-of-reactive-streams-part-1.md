@@ -9,7 +9,7 @@ tags:
 
 ## 介绍
 
-[Reactive-Streams](https://github.com/reactive-streams/reactive-streams-jvm/) 最近在并发/并行技术圈越来越知名，也出现了好几个不同的实现，最值得关注的包括：[Akka-Streams](https://github.com/akka/akka/tree/master/akka-stream/src)，[Project Reactor](https://github.com/reactor/reactor/) 和 [RxJava 2.0](https://github.com/ReactiveX/RxJava/tree/2.x)。
+[Reactive-Streams](https://github.com/reactive-streams/reactive-streams-jvm) 最近在并发/并行技术圈越来越知名，也出现了好几个不同的实现，最值得关注的包括：[Akka-Streams](https://github.com/akka/akka/tree/master/akka-stream/src)，[Project Reactor](https://github.com/reactor/reactor) 和 [RxJava 2.0](https://github.com/ReactiveX/RxJava/tree/2.x)。
 
 在本文中，我将展示如何利用这些库实现简单的数据流，并且用 JMH 进行性能测试。为了对比的完整性，我还对 RxJava 1.0.14，Java 以及 `j.u.c.Stream` 进行了测试。
 

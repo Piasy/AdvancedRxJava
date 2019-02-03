@@ -94,7 +94,7 @@ implements OnSubscribe<T>, Observer<T> {
 }
 ~~~
 
-现在还没有特殊的地方。我们用一个 `volatile SubscriberState` 数组保存所有订阅者的状态，`add`，`remove` 和 `terminate` 方法进行操作。我们利用 `EMPTY` 常量，避免每次所有的 Subscriber 都取消之后都要分配一个新的空数组。这种方式看过[此前 Subscription 容器相关文章](/AdvancedRxJava/2016/07/29/operator-concurrency-primitives-subscription-containers-3/){:target="_blank"}的朋友应该会很熟悉。现在让我们看看 `add()` 的实现：
+现在还没有特殊的地方。我们用一个 `volatile SubscriberState` 数组保存所有订阅者的状态，`add`，`remove` 和 `terminate` 方法进行操作。我们利用 `EMPTY` 常量，避免每次所有的 Subscriber 都取消之后都要分配一个新的空数组。这种方式看过[此前 Subscription 容器相关文章](/AdvancedRxJava/2016/07/29/operator-concurrency-primitives-subscription-containers-3/index.html){:target="_blank"}的朋友应该会很熟悉。现在让我们看看 `add()` 的实现：
 
 ~~~ java
 boolean add(SubscriberState<T> subscriber) {

@@ -93,9 +93,9 @@ source.subscribe(s);
 
 事实上，我们可以在实际订阅之前设置好取消订阅逻辑，这样即便在最复杂的操作符中，我们也能恰当地把取消订阅的操作传播出去了。
 
-此外，上面的结构中还有一层更深的暗示。在我们创建的 Observable 中，lambda 表达式并没有任何东西，但 `Observable.subscribe()` 调用仍会返回一个实际上和传入的 `Subscriber` 参数一样的 `Subscription`。（技术上来说，这个话题涉及到的内容比较多，可以看看 [Jake Wharton 对这个话题的一个精彩演讲](http://jakewharton.com/presentation/2015-11-05-oredev/)）
+此外，上面的结构中还有一层更深的暗示。在我们创建的 Observable 中，lambda 表达式并没有任何东西，但 `Observable.subscribe()` 调用仍会返回一个实际上和传入的 `Subscriber` 参数一样的 `Subscription`。（技术上来说，这个话题涉及到的内容比较多，可以看看 [Jake Wharton 对这个话题的一个精彩演讲](http://jakewharton.com/presentation/2015-11-05-oredev)）
 
-更进一步：如果我们需要返回什么东西，那我们就不可能彻底地响应式。返回数据就意味着同步的行为，函数就需要产生结果，即便此时它并不能产生这一结果。这时我们就只能阻塞或者 sleep 到实际产生数据的代码执行完毕了。这一点我在[关于 OSGi Asynchronous Event Streams 的文章中](/AdvancedRxJava/2017/03/25/asynchronous-event-streams-vs-reactive/)有讲述。
+更进一步：如果我们需要返回什么东西，那我们就不可能彻底地响应式。返回数据就意味着同步的行为，函数就需要产生结果，即便此时它并不能产生这一结果。这时我们就只能阻塞或者 sleep 到实际产生数据的代码执行完毕了。这一点我在[关于 OSGi Asynchronous Event Streams 的文章中](/AdvancedRxJava/2017/03/25/asynchronous-event-streams-vs-reactive/index.html)有讲述。
 
 ## Subscriber 的资源管理
 
@@ -115,7 +115,7 @@ source.subscribe(s);
 
 ## Subscriber 的 request() 函数
 
-如果我们看看 `Subscriber` 的实现，我们会发现一个 `protected` 的 `request()` 函数。这让我们可以很方便地发出请求，并保证如果当前已经通过 `setProducer` 设置了 `Producer`，那就把请求转发给它，如果没有 `Producer`，那就积累请求直到 `Producer` 到来。基本上来说，这就是一个内联的 [producer-arbiter](/AdvancedRxJava/2016/07/02/operator-concurrency-primitives-7/)。
+如果我们看看 `Subscriber` 的实现，我们会发现一个 `protected` 的 `request()` 函数。这让我们可以很方便地发出请求，并保证如果当前已经通过 `setProducer` 设置了 `Producer`，那就把请求转发给它，如果没有 `Producer`，那就积累请求直到 `Producer` 到来。基本上来说，这就是一个内联的 [producer-arbiter](/AdvancedRxJava/2016/07/02/operator-concurrency-primitives-7/index.html)。
 
 有人可能会觉得这个函数的实现为请求管理带来了很大的开销，但 JMH benchmark 确认了它的影响在 +/- 3% 之内，而误差都可能会导致这种规模的差异。
 

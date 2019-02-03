@@ -59,7 +59,7 @@ backpressure 的问题则通过双方协调的方式解决，利用 `Producer` �
 
 ### 第 3 代
 
-除了[稍显笨拙以及限制了一些优化方案](/AdvancedRxJava/2017/04/21/rxjava-design-retrospect/)之外，RxJava 的另一个问题是和其他（将要发布的）响应式变成库无法兼容。意识到响应式编程（支持 backpressure）的兴起之后，来自各个公司的工程师们聚在了一起，设计了一套 Reactive-Streams 规范。它的主要成果是 4 个接口，30 条关于这几个接口的规则，以及这几个接口里的 7 个方法。
+除了[稍显笨拙以及限制了一些优化方案](/AdvancedRxJava/2017/04/21/rxjava-design-retrospect/index.html)之外，RxJava 的另一个问题是和其他（将要发布的）响应式变成库无法兼容。意识到响应式编程（支持 backpressure）的兴起之后，来自各个公司的工程师们聚在了一起，设计了一套 Reactive-Streams 规范。它的主要成果是 4 个接口，30 条关于这几个接口的规则，以及这几个接口里的 7 个方法。
 
 Reactive-Streams 规范使得响应式编程实现库之间可以相互兼容，可以跨越各个库的边界，组合序列、取消序列以及实现 backpressure，并且还能随意切换具体的实现库。
 
@@ -101,7 +101,7 @@ Reactive-Streams 规范使得响应式编程实现库之间可以相互兼容，
 
 #### 1) 把操作符替换为另一个操作符
 
-在这种形式的熔合中，被应用的操作符查看上游数据源，按需调用/初始化另一个操作符，而不是实例化自己的实现（这也是我[之前提到 `lift()` 会导致问题](/AdvancedRxJava/2017/04/21/rxjava-design-retrospect/)的原因）。
+在这种形式的熔合中，被应用的操作符查看上游数据源，按需调用/初始化另一个操作符，而不是实例化自己的实现（这也是我[之前提到 `lift()` 会导致问题](/AdvancedRxJava/2017/04/21/rxjava-design-retrospect/index.html)的原因）。
 
 例如我们把 `amb()`/`concat()`/`merge()` 应用到一组数据源，但它们只会发出一个数据时，我们就没必要初始化这些操作符，直接返回这个数据即可。这类优化在 RxJava 1.x 中就已经实现了。
 
@@ -115,7 +115,7 @@ Reactive-Streams 规范使得响应式编程实现库之间可以相互兼容，
 
 因此把这种操作符对合并为单个操作符，把调度和发出这个唯一的数据这两件事结合起来，就能带来显著的优化了。
 
-上面这种方式可以被扩展到其他的操作符中，尤其是涉及到 `just()` 时，例如 `flatMap()`，所有[内部的复杂度](/AdvancedRxJava/2017/04/10/flatmap-part-1/)都可以跳过，我们直接用这个数据调用 mapper，并使用这个单一的 `Observable`/`Publisher` 即可，无需额外的缓冲和同步。
+上面这种方式可以被扩展到其他的操作符中，尤其是涉及到 `just()` 时，例如 `flatMap()`，所有[内部的复杂度](/AdvancedRxJava/2017/04/10/flatmap-part-1/index.html)都可以跳过，我们直接用这个数据调用 mapper，并使用这个单一的 `Observable`/`Publisher` 即可，无需额外的缓冲和同步。
 
 同样的，RxJava 1.x 也已经应用了这些优化。
 
@@ -186,7 +186,7 @@ b) 由于有了返回值，`onNextIf()` 的实现就必须是同步的。不过�
 
 通常这样的操作符有 `range()`，`fromIterable`，`fromArray`，`fromStream` 和 `fromCallable`。当然 `just()` 也算，不过它在宏熔合中涉及得更多。
 
-内部使用队列的操作符包括 `observeOn()`，[`flatMap()` 的内部数据源](/AdvancedRxJava/2017/04/15/flatmap-part-2/)，`publish()`，`zip()` 等。
+内部使用队列的操作符包括 `observeOn()`，[`flatMap()` 的内部数据源](/AdvancedRxJava/2017/04/15/flatmap-part-2/index.html)，`publish()`，`zip()` 等。
 
 同步熔合的思路就是，上游的 `Subscription` 实现 `Queue` 接口，在订阅时的 `onSubscribe()` 函数中，如果我们发现 Subscription 实现了 Queue 接口，那就无需创建自己的队列。
 

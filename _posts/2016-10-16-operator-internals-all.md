@@ -28,7 +28,7 @@ tags:
 
 backpressure 的要求没有变，但由于 `onSubscribe` 的调用是必须的，所以 `onNext` 到来时就说明下游一定已经请求过了数据。
 
-如果在 `onNext` 中遇到了不满足条件的数据，就无需进行中转了，我们可以直接发往下游，因为上游发来了数据，就说明下游一定已经有了请求。但对于空的上游来说，我们还是需要进行中转的。这里的状态机和[前文](/AdvancedRxJava/2016/06/04/operator-concurrency-primitives-4/){:target="_blank"}中的状态机很类似。有一个值得注意的区别就在于，由于我们知道需要延迟发射的数据一定是 `true`，所以我们无需一个变量保存它的值了。
+如果在 `onNext` 中遇到了不满足条件的数据，就无需进行中转了，我们可以直接发往下游，因为上游发来了数据，就说明下游一定已经有了请求。但对于空的上游来说，我们还是需要进行中转的。这里的状态机和[前文](/AdvancedRxJava/2016/06/04/operator-concurrency-primitives-4/index.html){:target="_blank"}中的状态机很类似。有一个值得注意的区别就在于，由于我们知道需要延迟发射的数据一定是 `true`，所以我们无需一个变量保存它的值了。
 
 让我们看看 `AllSubscriber#onNext()`：
 

@@ -88,7 +88,7 @@ public final class DoOnUpdate implements Observable {
 
 而这导致了毫不相关的下游 `Updatable` 之间，在每个环节都存在竞争点。
 
-的确，RxJava 的 [Subject](/AdvancedRxJava/2016/10/05/subjects-part-3/) 和 [ConnectableObservable](/AdvancedRxJava/2017/03/03/connectableobservables-part-2/) 中也存在类似的竞争点，但它们之后链起来的操作符之间是不存在竞争的。不幸的是，Reactive-Streams 规范当前版本是禁止 `Publisher` 存在类似的竞争的，但 RxJava，Rsc 和 Reactor 都忽略了这一点，这其实是过于保守了，我们也正在努力矫枉，以让规范更轻量。
+的确，RxJava 的 [Subject](/AdvancedRxJava/2016/10/05/subjects-part-3/index.html) 和 [ConnectableObservable](/AdvancedRxJava/2017/03/03/connectableobservables-part-2/index.html) 中也存在类似的竞争点，但它们之后链起来的操作符之间是不存在竞争的。不幸的是，Reactive-Streams 规范当前版本是禁止 `Publisher` 存在类似的竞争的，但 RxJava，Rsc 和 Reactor 都忽略了这一点，这其实是过于保守了，我们也正在努力矫枉，以让规范更轻量。
 
 第二个问题没这么严重，那就是我们没法添加同一个 `Updatable` 多次。首先因为我们用 `Map` 无法区分不同的“订阅关系”，其次，Agera 规范也要求在这种情况下抛出异常。当然，通常这种情况都不会发生，因为大多数末端消费者都只用一次。
 
@@ -273,7 +273,7 @@ interface Updatable {
 
 **4）提供可选的异步支持**。
 
-在 `MutableRepository` 的例子中，我们可能希望在回到主线程之前，在调用者线程上线处理一下数据。这就意味着需要 [observeOn](/AdvancedRxJava/2016/09/16/subscribeon-and-observeon/) 或者 `subscribeOn` 了（如果我们需要处理冷数据源的话）。
+在 `MutableRepository` 的例子中，我们可能希望在回到主线程之前，在调用者线程上线处理一下数据。这就意味着需要 [observeOn](/AdvancedRxJava/2016/09/16/subscribeon-and-observeon/index.html) 或者 `subscribeOn` 了（如果我们需要处理冷数据源的话）。
 
 ## 总结
 
@@ -283,7 +283,7 @@ interface Updatable {
 
 大家可能会问，我为啥要关心 Google/Agera？我对 RxJava 不自信吗？我当然很自信，而且 Agera 的出现对 RxJava 半毛钱影响都没有！
 
-然而，根据[我以往的经验](/AdvancedRxJava/2017/03/25/asynchronous-event-streams-vs-reactive/)，如果有人空有噱头，口说无凭，盲目自信，那整个社区都可能会被带坏。我并不想对这件事做出太多评价，但想象一下，如果安卓的下一个版本强制以当前这个形态的 Agera 作为**标准的**安卓异步编程库（_那将多么糟糕..._）。
+然而，根据[我以往的经验](/AdvancedRxJava/2017/03/25/asynchronous-event-streams-vs-reactive/index.html)，如果有人空有噱头，口说无凭，盲目自信，那整个社区都可能会被带坏。我并不想对这件事做出太多评价，但想象一下，如果安卓的下一个版本强制以当前这个形态的 Agera 作为**标准的**安卓异步编程库（_那将多么糟糕..._）。
 
 （此外，[互操作](https://github.com/akarnokd/RxAgera)有时是不可避免的，我并不希望如果它们无法很好地互操作时，在 RxJava 的 issue 里面看到大家的抱怨。）
 

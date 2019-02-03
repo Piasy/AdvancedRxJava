@@ -66,7 +66,7 @@ Observable<Integer> source = Observable.create(child -> {
 source.take(150).subscribe(System.out::println);
 ~~~
 
-`QueuedProducer` 类的结构很直观，而且和之前文章中的 producer 结构很像。我们在（1）处理下游的请求，在（2）处理上游发过来的数据，新鲜的只有（3）处的 `drain()` 函数。正如它的名字一样，它是用来实现[前文中](/AdvancedRxJava/2016/05/13/operator-concurrency-primitives-2/){:target="_blank"}所介绍的队列漏（queue-drain）的。为了简洁起见，这里我将省略快路径（fast-path）的优化。
+`QueuedProducer` 类的结构很直观，而且和之前文章中的 producer 结构很像。我们在（1）处理下游的请求，在（2）处理上游发过来的数据，新鲜的只有（3）处的 `drain()` 函数。正如它的名字一样，它是用来实现[前文中](/AdvancedRxJava/2016/05/13/operator-concurrency-primitives-2/index.html){:target="_blank"}所介绍的队列漏（queue-drain）的。为了简洁起见，这里我将省略快路径（fast-path）的优化。
 
 首先让我们实现 `request()` 方法：
 

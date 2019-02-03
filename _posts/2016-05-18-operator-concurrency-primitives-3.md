@@ -92,7 +92,7 @@ ts.getOnNextEvents().forEach(System.out::println);
 （奇怪的是，这两个要求并未在 reactive-streams-jvm 规范中强制提出，尽管我为此展开过讨论，以及依据规范实现了一套 API 以进行实验。尽管有些操作符只需要保证可重入就不会出现问题，但我认为非直观的操作符实现中，我们应该持保守态度，并且严格遵守上述两个要求。）
 
 ## 解决 range 中的安全性问题
-现在我们就可以在 producer 的 `request` 方法中运用在[之前的文章](/AdvancedRxJava/2016/05/13/operator-concurrency-primitives-2/){:target="_blank"}中讲解的串行访问原则了。由于请求数据的个数也是一个数字，所以我们可以把它和 `wip` 合并起来以节省内存。同时我们可以直接继承 `AtomicLong` 并实现 `Producer` 以进一步节约内存（每个 producer 实例至少减少 24 字节）。
+现在我们就可以在 producer 的 `request` 方法中运用在[之前的文章](/AdvancedRxJava/2016/05/13/operator-concurrency-primitives-2/index.html){:target="_blank"}中讲解的串行访问原则了。由于请求数据的个数也是一个数字，所以我们可以把它和 `wip` 合并起来以节省内存。同时我们可以直接继承 `AtomicLong` 并实现 `Producer` 以进一步节约内存（每个 producer 实例至少减少 24 字节）。
 
 由于 producer 的逻辑稍微有点复杂，所以我先讲解一下 `RangeProducer` 的类结构：
 

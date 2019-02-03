@@ -338,7 +338,7 @@ void emitLoop() {
 7. 如果不是上述任何哨兵类型，那就说明是 `T` 类型的数据，我们就把它发给 child，并计一次发射。
 8. 最后，如果 `requested` 不是 `Long.MAX_VALUE`，我们就把它减去这次外循环发射的量并更新。
 
-可能在我们立马就要替换 producer 时仍让老的 producer 继续生产是没有意义甚至不是我们想要的行为。例如在 `switchOnNext` 中，如果连续两次切换数据源，我们可能就希望可以跳过第一个数据源直接前换到第二个数据源。这时我们可以使用在[前文](/AdvancedRxJava/2016/07/02/operator-concurrency-primitives-7/){:target="_blank"}中介绍的 `missedProducer` 方式，而不是把替换 producer 操作加入队列中，我们也可以决定是否需要清空队列中尚未发出的数据。此外，我们也可以使用 `ProducerArbiter` 的成员，来避免处理请求和生产时的额外内存分配。
+可能在我们立马就要替换 producer 时仍让老的 producer 继续生产是没有意义甚至不是我们想要的行为。例如在 `switchOnNext` 中，如果连续两次切换数据源，我们可能就希望可以跳过第一个数据源直接前换到第二个数据源。这时我们可以使用在[前文](/AdvancedRxJava/2016/07/02/operator-concurrency-primitives-7/index.html){:target="_blank"}中介绍的 `missedProducer` 方式，而不是把替换 producer 操作加入队列中，我们也可以决定是否需要清空队列中尚未发出的数据。此外，我们也可以使用 `ProducerArbiter` 的成员，来避免处理请求和生产时的额外内存分配。
 
 现在就只差一个使用样例了，现在我们实现一个根据时间在一个固定的 Observable 集合中进行切换的操作符：
 
